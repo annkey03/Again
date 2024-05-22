@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Servicios para Mascotas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f3f3;
+            color: #333; /* Cambiar color de texto a negro */
+        }
+        .hero-section {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+            animation: float 5s infinite alternate;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+        .hero-section h1 {
+            font-size: 60px;
+            font-style: italic; /* Aplicar estilo cursivo */
+        }
+        .typed-text {
+            color: #fff;
+            font-size: 24px;
+            margin-top: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid #fff;
+            animation: typing 5s steps(40, end), blink-caret 0.75s step-end infinite;
+            display: inline-block;
+            text-align: left;
+            font-style: italic; /* Aplicar estilo cursivo */
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #fff }
+        }
+        nav {
+            text-align: center;
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: all 0.3s ease;
+            font-size: 18px;
+        }
+        nav a:hover {
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        section {
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: float 5s infinite alternate;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center; /* Centrar título */
+        }
+        h3 {
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        footer {
+            background-color: #333;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 0;
+            animation: float 5s infinite alternate;
+        }
+        footer p {
+            margin: 0;
+        }
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        footer a:hover {
+            color: #fff;
+        }
+        .service-icon {
+            transition: all 0.3s ease;
+            animation: float 5s infinite alternate;
+        }
+        .service-icon:hover {
+            transform: scale(1.1);
+        }
+        .mission-icon {
+            font-size: 60px;
+            color: #3c3d3f;
+        }
+        .btn-ingresar {
+            display: block;
+            margin: 20px auto;
+            padding: 15px 30px;
+            background-color: #3b4f79;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .btn-ingresar:hover {
+            background-color: #304064;
+            transform: scale(1.1);
+        }
+        .btn-container {
+            text-align: center;
+        }
+        .btn-container a {
+            margin: 0 20px;
+        }
+        .btn-container a:hover {
+            transform: translateY(-3px);
+        }
+        .service-icon img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        .service-icon:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Happy Tails</h1>
+            <div class="typed-text">
+                <p id="typed-text-content"></p>
+            </div>
+        </div>
+        <img src="/static/principal2.jpg" alt="Imagen Happy Tails" style="margin-top: 20px; width: 900px; height: 500px; box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);">
+    </div>
+
+    <nav>
+        <a href="#servicios"><i class="fas fa-paw"></i> Servicios</a>
+        <a href="#mision-vision"><i class="fas fa-bullseye"></i> Misión y Visión</a>
+        <a href="#quienes-somos"><i class="fas fa-users"></i> Quiénes Somos</a>
+    </nav>
+
+    <div class="btn-container">
+        <a href="/loginn" class="btn-ingresar">Ingresar</a>
+    </div>
+
+    <section id="servicios">
+        <h2>Servicios</h2>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div style="flex: 1; margin: 10px; text-align: center;" class="service-icon">
+                <img src="/static/publicar.jpg" alt="Publicar";>
+                <h3>Publicar</h3>
+                <p>Comparte experiencias, consejos y dudas sobre mascotas en nuestro espacio comunitario</p>
+            </div>
+            <div style="flex: 1; margin: 10px; text-align: center;" class="service-icon">
+                <img src="/static/aliado.jpg" alt="Aliado">
+                <h3>Convertirse en aliado</h3>
+                <p>Conviértete en aliado y muestra tus productos y servicios para mascotas en nuestras publicaciones, alcanzando a una audiencia comprometida y afín a tus productos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="mision-vision">
+        <h2>Misión y Visión</h2>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div style="flex: 1; margin: 10px; text-align: center;">
+                <i class="fas fa-bullseye mission-icon"></i>
+                <h3>Misión</h3>
+                <p>Facilitar la adopción y rescate de animales sin hogar en la ciudad de Facatativá</p>
+            </div>
+            <div style="flex: 1; margin: 10px; text-align: center;">
+                <i class="fas fa-eye mission-icon"></i>
+                <h3>Visión</h3>
+                <p>Para el 2028 convertirnos en el principal aplicativo web para la adopción y rescate de perros y gatos, siendo reconocidos a nivel regional por nuestra dedicación y compromiso.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="quienes-somos">
+        <h2>Quiénes Somos</h2>
+        <p>Somos una pequeña empresa fundada por dos amantes de los animales, comprometidos en facilitar la adopción y rescate de animales sin hogar en Facatativá. Nuestro aplicativo web conecta de manera eficiente a personas interesadas en adoptar y rescatar, promoviendo así el bienestar animal en nuestra comunidad. Para el 2028, aspiramos a ser el principal referente en adopción y rescate de perros y gatos en la región, reconocidos por nuestra dedicación en la construcción de una comunidad solidaria en torno al cuidado animal.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Happy Tails</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const phrases = [
+                "Comunidad para amantes de mascotas: ¡Comparte, pregunta, conecta!",
+                "Pregunta, aprende, comparte: juntos por nuestros amigos peludos",
+                "Porque cada mascota merece un hogar feliz",
+                "Encuentra tu compañero perfecto"
+            ];
+            const typedText = document.getElementById("typed-text-content");
+            let index = 0;
+
+            function typePhrase() {
+                typedText.textContent = "";
+                const phrase = phrases[index];
+                let i = 0;
+                const typingInterval = setInterval(function() {
+                    typedText.textContent += phrase[i];
+                    i++;
+                    if (i === phrase.length) {
+                        clearInterval(typingInterval);
+                        setTimeout(erasePhrase, 2000);
+                    }
+                }, 100);
+            }
+
+            function erasePhrase() {
+                const phrase = typedText.textContent;
+                const eraseInterval = setInterval(function() {
+                    typedText.textContent = typedText.textContent.slice(0, -1);
+                    if (typedText.textContent === "") {
+                        clearInterval(eraseInterval);
+                        index = (index + 1) % phrases.length;
+                        setTimeout(typePhrase, 500);
+                    }
+                }, 50);
+            }
+
+            typePhrase();
+        });
+    </script>
+</body>
+</html>

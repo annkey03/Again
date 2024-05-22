@@ -1,0 +1,324 @@
+{% block content %}
+{% load static %}
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> 
+    <script src="https://kit.fontawesome.com/cb792c0850.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<style>
+    body {
+        background-color: #eee; /* Cambiado el color de fondo */
+        font-family: 'Poppins', sans-serif; /* Fuente para el cuerpo */
+    }
+
+    .convertirse-btn {
+        position: absolute; /* Cambiado a posición absoluta */
+        top: 20px; /* Posicionado debajo de la barra de navegación */
+        left: 50%; /* Centrado horizontalmente */
+        transform: translateX(-50%); /* Centrado horizontal */
+        background-color: #3b4f79;
+        
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 40px; /* Tamaño del título aumentado */
+        font-style: italic; /* Cambiado a cursiva */
+        font-family: 'Times New Roman', Times, serif; /* Cambiado a Times New Roman */
+        font-weight: 400; /* Reducción del peso de la fuente */
+    }
+
+    .aliado-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px;
+        margin-left: 120px;
+    }
+
+    .aliado-card {
+        width: calc(25% - 20px);
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .aliado-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 20px;
+    }
+
+    .aliado-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .aliado-name {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .aliado-info {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .social-icons i {
+        font-size: 30px;
+        color: #666;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+    .formulario-gestion {
+        position: relative; /* Cambiado a posición relativa */
+        margin: 0 auto; /* Centrado horizontal */
+        max-width: 600px; /* Ancho máximo del formulario */
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .formulario-gestion h2 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .formulario-gestion .form-group {
+        margin-bottom: 20px;
+    }
+
+    .formulario-gestion input[type="text"],
+    .formulario-gestion input[type="email"],
+    .formulario-gestion input[type="password"],
+    .formulario-gestion input[type="tel"],
+    .formulario-gestion input[type="file"],
+    .formulario-gestion input[type="button"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .formulario-gestion input[type="button"] {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    .response {
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #777;
+    }
+    * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            background-color: #D7D7D7;
+            height: 100vh;
+            
+        }
+
+        .profile-pic {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        a {
+            color: rgb(0, 0, 0);
+        }
+
+</style>
+<nav class="col-md-2 d-none d-md-block sidebar" style="position: fixed;">
+    <div class="text-center mt-3">
+        <img src="{{profile.profileimg.url}}" alt="Profile Picture" class="profile-pic">
+        <h4 class="mt-2"><a href="/profile/{{user}}" style="text-decoration:none;">@{{user}}</a></h4>
+    </div>
+    <ul class="nav flex-column mt-4">
+        <li class="nav-item">
+            <a class="nav-link active" href="/"; style="color: black";>
+                <i class="fa-solid fa-house mr-1"></i> Inicio
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/explore"; style="color: black";>
+                <i class="fa-solid fa-compass mr-1"></i> Explorar
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/aliados"; style="color: black";>
+                <i class="fas fa-users mr-1"></i> Aliados
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal3"; style="color: black";>
+                <i class="fa-solid fa-magnifying-glass mr-1"></i> Buscar
+            </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                data-bs-whatever="@getbootstrap"; style="color: black";>
+                <i class="fa-solid fa-circle-plus mr-1"></i> Crear publicación
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/profile/{{user}}"; style="color: black";>
+                <i class="fa-solid fa-user mr-1"></i> Perfil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/logoutt"; style="color: black";>
+                <i class="fa-solid fa-right-from-bracket mr-1"></i> Salir
+            </a>
+        </li>
+        <img src="{% static '/logoHT.png' %}" alt="Logo" style="width: 120px; margin-right: 5px; margin-left: 40px; margin-top: 50px;">
+    </ul>
+</nav>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <br><br><br>
+            <h2 style="font-size: 42px; font-weight: 300;">Nuestros Aliados</h2> <!-- Cambiado a h2 -->
+        </div>
+    </div>
+</div>
+
+<button class="convertirse-btn" onclick="mostrarFormulario()">Convertirse en aliado</button>
+
+<div class="container" id="formulario-container" style="display: none;">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card formulario-gestion">
+                <h2>Gestión de aliados <span class="close-btn" onclick="cerrarFormulario()">&times;</span></h2> <!-- Botón de cierre -->
+                <form id="formularioAliado" action="{% url 'registrar_aliado' %}" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="txtNombre">Nombre de la empresa:</label>
+                        <input type="text" id="txtNombre" name="txtNombre" placeholder="Nombre de la empresa" minlength="3" maxlength="20" autofocus required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCorreo">Correo de la empresa:</label>
+                        <input type="email" id="txtCorreo" name="txtCorreo" placeholder="Correo de la empresa" minlength="5" maxlength="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="ofrezco">Ofrezco:</label>
+                        <select id="ofrezco" name="ofrezco">
+                            <option value="Producto">Producto</option>
+                            <option value="Servicio">Servicio</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoría:</label>
+                        <select id="categoria" name="categoria">
+                            <option value="Alimentación adecuada">Alimentación adecuada</option>
+                            <option value="Ejercicio">Ejercicio</option>
+                            <option value="Atención veterinaria">Atención veterinaria</option>
+                            <option value="Higiene y cuidado">Higiene y cuidado</option>
+                            <option value="Entrenamiento y socialización">Entrenamiento y socialización</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Telefono">Teléfono de la empresa:</label>
+                        <input type="tel" id="Telefono" name="Telefono" placeholder="Teléfono de la empresa" minlength="5" maxlength="30">
+                    </div>
+                    <div class="form-group">
+                        <label for="imagenAliado">Imagen de la empresa:</label>
+                        <input type="file" id="imagenAliado" name="imagenAliado">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="btn btn-success btn-block text-white" value="Guardar" onclick="guardarInformacion()">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 aliado-container" id="aliados-container">
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    function mostrarFormulario() {
+        document.getElementById("formulario-container").style.display = "block";
+    }
+
+    function cerrarFormulario() {
+        document.getElementById("formulario-container").style.display = "none";
+    }
+
+    function guardarInformacion() {
+        // Simulamos que guardamos la información en variables
+        var nombre = document.getElementById("txtNombre").value;
+        var correo = document.getElementById("txtCorreo").value;
+        var ofrezco = document.getElementById("ofrezco").value;
+        var categoria = document.getElementById("categoria").value;
+        var telefono = document.getElementById("Telefono").value;
+        var imagen = document.getElementById("imagenAliado").files[0];
+
+        // Aquí puedes agregar el código para guardar la información en la base de datos
+
+        // Mostramos la información del aliado en la lista de aliados
+        var aliadoHTML = `
+        <div class="aliado-card">
+            <div class="aliado-image">
+                <img src="${URL.createObjectURL(imagen)}" alt="Imagen del aliado">
+            </div>
+            <p class="aliado-name">${nombre}</p>
+            <p class="aliado-info">${ofrezco}</p>
+            <p class="aliado-info">${categoria}</p>
+            <div class="social-icons">
+                <i class="fas fa-envelope" onclick="location.href='mailto:${correo}'"></i>
+                <i class="fas fa-phone" onclick="location.href='tel:${telefono}'"></i>
+            </div>
+        </div>`;
+        document.getElementById("aliados-container").insertAdjacentHTML('beforeend', aliadoHTML);
+
+        // Mostramos un mensaje de éxito
+        alert("Información guardada correctamente");
+
+        // Ocultamos el formulario después de guardar la información
+        document.getElementById("formulario-container").style.display = "none";
+    }
+</script>
+
+{% endblock %}
+

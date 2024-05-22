@@ -1,0 +1,87 @@
+
+{% block title %}Lista de Aliados{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Registrar Aliado</h2>
+            <form action="{% url 'registrar_aliado' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="txtNombre" class="form-label">Nombre de la empresa:</label>
+                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="txtCorreo" class="form-label">Correo de la empresa:</label>
+                    <input type="email" class="form-control" id="txtCorreo" name="txtCorreo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ofrezco" class="form-label">Oferta:</label>
+                    <select class="form-select" id="ofrezco" name="ofrezco" required>
+                        <option value="Producto">Producto</option>
+                        <option value="Servicio">Servicio</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoría:</label>
+                    <select class="form-select" id="categoria" name="categoria" required>
+                        <option value="Alimentación adecuada">Alimentación adecuada</option>
+                        <option value="Ejercicio">Ejercicio</option>
+                        <option value="Atención veterinaria">Atención veterinaria</option>
+                        <option value="Higiene y cuidado">Higiene y cuidado</option>
+                        <option value="Entrenamiento y socialización">Entrenamiento y socialización</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="Telefono" class="form-label">Teléfono de la empresa:</label>
+                    <input type="tel" class="form-control" id="Telefono" name="Telefono" required>
+                </div>
+                <div class="mb-3">
+                    <label for="imagen" class="form-label">Imagen de la empresa:</label>
+                    <input type="file" class="form-control" id="imagen" name="imagen">
+                </div>
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h2>Lista de Aliados</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Correo</th>
+                        <th scope="col">Oferta</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col">Teléfono</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for aliado in aliados %}
+                    <tr>
+                        <th scope="row">{{ aliado.id }}</th>
+                        <td>{{ aliado.nombre_empresa }}</td>
+                        <td>{{ aliado.correo_empresa }}</td>
+                        <td>{{ aliado.oferta }}</td>
+                        <td>{{ aliado.categoria }}</td>
+                        <td>{{ aliado.telefono_empresa }}</td>
+                        <td>
+                            {% if aliado.imagen %}
+                            <img src="{{ aliado.imagen.url }}" alt="Imagen de {{ aliado.nombre_empresa }}" style="max-width: 100px;">
+                            {% else %}
+                            No hay imagen disponible
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'eliminar_aliado' aliado.id %}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
